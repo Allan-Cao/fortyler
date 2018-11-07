@@ -1,32 +1,38 @@
+##########################################################
+# UPDATED CODE PREVIOUS WAS BROKEN SO SORRY!!!!!!!!!!!!! #
+##########################################################
+#                      - ALLAN -                         #
+##########################################################
 import math
-import fastrand
 import random
 import time
 start = time.time()
 layers = 5
-width = 10
-Vasic = 1000000
+width = 4
+Vasic = 100000
 
 def roll():
-    return(random.choice([1,-1]))
+    return(random.choice([0,-1]))
 def start():
-    return(fastrand.pcg32bounded(width)) #0123
-    
-def even(number,length):
+    return(random.randint(1,width))
+# 0 1 2 3
+#  0 1 2 
+# 0 1 2 3
+def even(a,length):
     rolld = roll()
-    number += rolld
-    if(number not in range(length)):
-        number = number + (rolld*-1*2)
-        return(number)
+    a += rolld
+    if(a<0 or a>(length-1)):
+      if(a >length-2):
+        return(length-2)
+      else:
+        return(0)
     else:
-        return(number)
+        return(a)
 def odd(number):
-    number = number + roll()
-
-    return(number)
-
+  rolled = roll()
+  number+=(rolled+1)
+  return(number)
 def maxim():
-    
     position = start()
     for x in range(layers):
         if (x%2==0):
@@ -44,9 +50,6 @@ from collections import Counter
 for x in range(width):
     #print(Counter(data)[x])
     print((Counter(data)[x]/Vasic)*100)
+print(data[0:100])
 
-with open("thedata5.txt", "w+") as file:
-    for datayes in data:
-        file.write(str(datayes) + "\n")
-print(str(time.time()-start)+" seconds")    
-    
+#
