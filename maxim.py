@@ -9,7 +9,7 @@ import time
 start = time.time()
 layers = 5
 width = 4
-Vasic = 100000
+Vasic = 10000
 
 def roll():
     return(random.choice([0,-1]))
@@ -22,7 +22,7 @@ def even(a,length):
     rolld = roll()
     a += rolld
     if(a<0 or a>(length-1)):
-      if(a >length-2):
+      if(a >length-1):
         return(length-2)
       else:
         return(0)
@@ -50,6 +50,3 @@ from collections import Counter
 for x in range(width):
     #print(Counter(data)[x])
     print((Counter(data)[x]/Vasic)*100)
-print(data[0:100])
-
-#
